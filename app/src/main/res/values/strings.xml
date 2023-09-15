@@ -5,4 +5,5 @@
     <string name="user_name_prompt">Enter Username</string>
     <string name="password_prompt">Enter Password</string>
     <string name="button_logout">Logout</string>
+    <string name="button_login">Login</string>
 </resources>
