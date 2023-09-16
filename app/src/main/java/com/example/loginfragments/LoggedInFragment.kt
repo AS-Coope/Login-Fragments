@@ -15,12 +15,17 @@ class LoggedInFragment : Fragment() {
     private val binding get() = _binding!!
     // gets the value stored in _binding that is expected to not be null
 
+    private lateinit var usernameId: String
     private lateinit var welcomeText: TextView
     private lateinit var logOutBtn: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        arguments?.let {
+            usernameId = it.getString(USERNAME).toString()
+        }
     }
 
     override fun onCreateView(
@@ -40,9 +45,19 @@ class LoggedInFragment : Fragment() {
         welcomeText = binding.welcomeTxt
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        welcomeText.text = "Welcome, $usernameId"
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null // basically removes the view associated with the fragment from memory
+    }
+
+    companion object{
+        const val USERNAME = "username"
     }
 
 }
