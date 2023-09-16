@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.loginfragments.databinding.FragmentLoggedInBinding
 
 class LoggedInFragment : Fragment() {
@@ -49,6 +51,11 @@ class LoggedInFragment : Fragment() {
         super.onResume()
 
         welcomeText.text = "Welcome, $usernameId"
+        logOutBtn.setOnClickListener {
+            val logOutAction = LoggedInFragmentDirections.actionLoggedInFragmentToLoginFragment()
+            it.findNavController().navigate(logOutAction)
+            Toast.makeText(requireContext(), "$usernameId has been logged out!", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroyView() {
