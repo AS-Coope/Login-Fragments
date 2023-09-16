@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.loginfragments.databinding.FragmentLoginBinding
 import com.google.android.material.textfield.TextInputEditText
 
@@ -42,6 +43,10 @@ class LoginFragment : Fragment() {
         super.onResume()
 
         loginButton?.setOnClickListener{
+
+            // sending the username from the log in fragment to the logged in fragment
+            val action = LoginFragmentDirections.actionLoginFragmentToLoggedInFragment(username = username.text.toString())
+            it.findNavController().navigate(action)
             Toast.makeText(requireContext(), "Login Button works", Toast.LENGTH_SHORT).show()
         }
 
