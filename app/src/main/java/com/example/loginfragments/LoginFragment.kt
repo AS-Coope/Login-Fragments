@@ -46,7 +46,7 @@ class LoginFragment : Fragment() {
 
             // sending the username from the log in fragment to the logged in fragment
             val action = LoginFragmentDirections.actionLoginFragmentToLoggedInFragment(username = username.text.toString())
-            it.findNavController().navigate(action)
+            it.findNavController().navigate(action) // allows the moving from one fragment to another
             Toast.makeText(requireContext(), "Login Button works", Toast.LENGTH_SHORT).show()
         }
 
